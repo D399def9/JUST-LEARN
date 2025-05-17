@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JUST LEARN - Programming Courses</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Minimal inline CSS for user info styling */
+    .user-display {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: white;
+    }
+    .user-pic {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+    }
+    .login-btn, .logout-btn {
+      padding: 6px 12px;
+      font-size: 1rem;
+      cursor: pointer;
+      border: none;
+      border-radius: 4px;
+      background-color: #007BFF;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+    .login-btn:hover, .logout-btn:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">JUST LEARN</div>
+    <div id="user-info">
+      <button class="login-btn">Login</button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>JUST LEARN</h1>
+    <p>Master Programming Languages with Our Video Courses</p>
+    <a href="#pricing" class="btn-primary">Start Learning</a>
+  </section>
+
+  <!-- About Section -->
+  <section class="about">
+    <h2>What You'll Learn</h2>
+    <p>Our video courses cover Python, HTML, CSS, JavaScript, and more.</p>
+    <img src="https://placehold.co/800x400?text=Course+Preview" alt="Video Preview" />
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="pricing">
+    <h2>Pricing</h2>
+    <p>Access all video lessons for just <span class="price">$29.99</span></p>
+    <a href="#" class="btn-secondary">Buy Now</a>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact">
+    <h2>Have Questions?</h2>
+    <p>Email us at <a href="mailto:justlearn@example.com">justlearn@example.com</a></p>
+  </section>
+
+  <footer>
+    &copy; 2025 JUST LEARN. All rights reserved.
+  </footer>
+
+  <!-- Firebase SDKs (compat version) -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+
+  <!-- Firebase Login Logic -->
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      const firebaseConfig = {
+        apiKey: "AIzaSyBSOJQMoLDSqYpokI3pe7BdKPP3WyyM8pY",
+        authDomain: "just-learn-71b12.firebaseapp.com",
+        projectId: "just-learn-71b12",
+        storageBucket: "just-learn-71b12.appspot.com",
+        messagingSenderId: "667220030792",
+        appId: "1:667220030792:web:ca3808c631b1da1ceb6f7d",
+        measurementId: "G-N5K88QPJC9"
+      };
+
+      firebase.initializeApp(firebaseConfig);
+      const auth = firebase.auth();
+      const provider = new firebase.auth.GoogleAuthProvider();
+
+      const userInfoDiv = document.getElementById("user-info");
+
+      function renderUser(user) {
+        if (user) {
+          // User is signed in
+          userInfoDiv.innerHTML = `
+            <div class="user-display">
+              <img src="${user.photoURL}" alt="${user.displayName}" class="user-pic" />
+              <span>Welcome, ${user.displayName}</span>
+              <button class="logout-btn">Logout</button>
+            </div>
+          `;
+
+          // Add logout event listener
+          userInfoDiv.querySelector(".logout-btn").addEventListener("click", () => {
+            auth.signOut().catch(err => {
+              console.error("Logout error:", err);
+              alert("Logout failed: " + err.message);
+            });
+          });
+        } else {
+          // No user signed in, show login button
+          userInfoDiv.innerHTML = `<button class="login-btn">Login</button>`;
+
+          // Add login event listener again
+          userInfoDiv.querySelector(".login-btn").addEventListener("click", () => {
+            auth.signInWithPopup(provider)
+              .catch((error) => {
+                console.error("Login error:", error.message);
+                alert("Login failed: " + error.message);
+              });
+          });
+        }
+      }
+
+      // Listen for auth state changes
+      auth.onAuthStateChanged((user) => {
+        renderUser(user);
+      });
+
+      // Initial render (in case user is already logged in)
+      renderUser(auth.currentUser);
+    });
+  </script>
+</body>
+</html>
