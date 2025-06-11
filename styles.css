@@ -167,3 +167,29 @@ footer {
   color: white;
   padding: 20px;
 }
+.menu-container {
+  position: relative;
+}
+
+.menu-icon {
+  font-size: 30px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+  display: none;
+  flex-direction: column;
+}
+
+.nav-links li {
+  margin: 10px 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+}
