@@ -1,5 +1,5 @@
 
-/* Base styles */
+/* === Base Styles === */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
@@ -30,7 +30,7 @@ img {
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-/* Navbar */
+/* === Navbar Styles === */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -38,20 +38,18 @@ img {
   background-color: #2563eb;
   padding: 15px 30px;
   color: white;
-  flex-wrap: wrap;
   position: relative;
+}
+
+.menu-container {
+  display: flex;
+  align-items: center;
+  gap: 30px;
 }
 
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
-}
-
-/* Menu Container */
-.menu-container {
-  display: flex;
-  align-items: center;
-  gap: 30px;
 }
 
 /* Navigation Menu */
@@ -63,14 +61,14 @@ img {
 #navMenu a {
   color: white;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: bold;
 }
 
 #navMenu a:hover {
   text-decoration: underline;
 }
 
-/* Hamburger Icon */
+/* === Hamburger Styles === */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -83,41 +81,16 @@ img {
   width: 25px;
   background: white;
   border-radius: 3px;
-  transition: 0.3s;
 }
 
-/* Buttons */
-.btn-primary,
-.btn-secondary,
-.login-btn,
-.logout-btn {
-  display: inline-block;
-  padding: 10px 16px;
+/* === Auth Buttons === */
+.login-btn, .logout-btn {
+  padding: 6px 12px;
   font-size: 1rem;
   cursor: pointer;
   border: none;
   border-radius: 4px;
-  font-weight: bold;
   transition: background-color 0.3s ease;
-  text-decoration: none;
-}
-
-.btn-primary {
-  background-color: white;
-  color: #2563eb;
-}
-
-.btn-primary:hover {
-  background-color: #f3f4f6;
-}
-
-.btn-secondary {
-  background-color: #2563eb;
-  color: white;
-}
-
-.btn-secondary:hover {
-  background-color: #1d4ed8;
 }
 
 .login-btn {
@@ -138,7 +111,6 @@ img {
   background-color: #0056b3;
 }
 
-/* User Info Display */
 .user-display {
   display: flex;
   align-items: center;
@@ -152,7 +124,7 @@ img {
   border-radius: 50%;
 }
 
-/* Hero Section */
+/* === Hero Section === */
 .hero {
   background-color: #2563eb;
   color: white;
@@ -167,12 +139,39 @@ img {
   font-size: 1.25rem;
 }
 
-/* About Section */
+/* === Buttons === */
+.btn-primary, .btn-secondary {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.btn-primary {
+  background: white;
+  color: #2563eb;
+}
+
+.btn-primary:hover {
+  background: #f3f4f6;
+}
+
+.btn-secondary {
+  background: #2563eb;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: #1d4ed8;
+}
+
+/* === Section Styles === */
 .about {
   background-color: #f9fafb;
 }
 
-/* Pricing Section */
 .pricing {
   background-color: #f3f4f6;
 }
@@ -183,13 +182,12 @@ img {
   color: #2563eb;
 }
 
-/* Contact Section */
 .contact a {
   color: #2563eb;
   text-decoration: underline;
 }
 
-/* Responsive */
+/* === Responsive Menu for Mobile === */
 @media (max-width: 768px) {
   .hamburger {
     display: flex;
@@ -213,7 +211,12 @@ img {
   }
 
   #navMenu a {
-    color: white;
-    padding: 8px 0;
+    padding: 10px 0;
+  }
+
+  .menu-container {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
   }
 }
