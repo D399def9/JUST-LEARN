@@ -10,28 +10,24 @@
 
   <!-- Navbar -->
   <nav class="navbar">
+    <div class="menu-container">
     <div class="logo">JUST LEARN</div>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <nav id="navMenu">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Contact</a>
+    </nav>
+  </div>
+  
     <div id="user-info"></div>
     <button id="login-btn" class="login-btn">Login with Google</button>
   </nav>
-  <div class="menu-container">
-  <div class="menu-icon" onclick="toggleMenu()">
-    &#9776;
-  </div>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#">Home</a></li>
-    <li><a href="#">About</a></li>
-    <li><a href="#">Services</a></li>
-    <li><a href="#">Contact</a></li>
-  </ul>
-</div>
-<script>
-  function toggleMenu() {
-    const nav = document.getElementById('navLinks');
-    nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
-  }
-</script>
-
   <!-- Hero Section -->
   <section class="hero">
     <h1>JUST LEARN</h1>
