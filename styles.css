@@ -1,5 +1,5 @@
-/* Reset & base styles */
-/* General Styles */
+
+/* Base styles */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
@@ -8,44 +8,6 @@ body {
   color: #333;
   line-height: 1.6;
 }
-.user-display {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: white;
-    }
-    .user-pic {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-    }
-    .logout-btn {
-      padding: 6px 12px;
-      font-size: 1rem;
-      cursor: pointer;
-      border: none;
-      border-radius: 4px;
-      background-color: #007BFF;
-      color: white;
-      transition: background-color 0.3s ease;
-    }
-    .logout-btn:hover {
-      background-color: #0056b3;
-    }
-
-    .login-btn {
-      padding: 6px 12px;
-      font-size: 1rem;
-      cursor: pointer;
-      border: none;
-      border-radius: 4px;
-      background-color: #28a745;
-      color: white;
-      transition: background-color 0.3s ease;
-    }
-    .login-btn:hover {
-      background-color: #218838;
-    }
 
 section {
   padding: 60px 20px;
@@ -68,7 +30,7 @@ img {
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-/* Navigation Bar */
+/* Navbar */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -76,6 +38,8 @@ img {
   background-color: #2563eb;
   padding: 15px 30px;
   color: white;
+  flex-wrap: wrap;
+  position: relative;
 }
 
 .logo {
@@ -83,17 +47,109 @@ img {
   font-weight: bold;
 }
 
-.login-btn {
+/* Menu Container */
+.menu-container {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+/* Navigation Menu */
+#navMenu {
+  display: flex;
+  gap: 20px;
+}
+
+#navMenu a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+#navMenu a:hover {
+  text-decoration: underline;
+}
+
+/* Hamburger Icon */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.hamburger span {
+  height: 3px;
+  width: 25px;
+  background: white;
+  border-radius: 3px;
+  transition: 0.3s;
+}
+
+/* Buttons */
+.btn-primary,
+.btn-secondary,
+.login-btn,
+.logout-btn {
+  display: inline-block;
+  padding: 10px 16px;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-primary {
   background-color: white;
   color: #2563eb;
-  padding: 8px 16px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: bold;
+}
+
+.btn-primary:hover {
+  background-color: #f3f4f6;
+}
+
+.btn-secondary {
+  background-color: #2563eb;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #1d4ed8;
+}
+
+.login-btn {
+  background-color: #28a745;
+  color: white;
 }
 
 .login-btn:hover {
-  background-color: #f3f4f6;
+  background-color: #218838;
+}
+
+.logout-btn {
+  background-color: #007BFF;
+  color: white;
+}
+
+.logout-btn:hover {
+  background-color: #0056b3;
+}
+
+/* User Info Display */
+.user-display {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+}
+
+.user-pic {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
 }
 
 /* Hero Section */
@@ -109,34 +165,6 @@ img {
 
 .hero p {
   font-size: 1.25rem;
-}
-
-/* Buttons */
-.btn-primary, .btn-secondary {
-  display: inline-block;
-  padding: 10px 20px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background 0.3s;
-}
-
-.btn-primary {
-  background: white;
-  color: #2563eb;
-}
-
-.btn-primary:hover {
-  background: #f3f4f6;
-}
-
-.btn-secondary {
-  background: #2563eb;
-  color: white;
-}
-
-.btn-secondary:hover {
-  background: #1d4ed8;
 }
 
 /* About Section */
@@ -159,4 +187,33 @@ img {
 .contact a {
   color: #2563eb;
   text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  #navMenu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 30px;
+    background-color: #2563eb;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 100;
+  }
+
+  #navMenu.show {
+    display: flex;
+  }
+
+  #navMenu a {
+    color: white;
+    padding: 8px 0;
+  }
 }

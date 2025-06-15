@@ -6,28 +6,28 @@
   <title>JUST LEARN - Programming Courses</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+  <body>
 
   <!-- Navbar -->
   <nav class="navbar">
     <div class="menu-container">
-    <div class="logo">JUST LEARN</div>
-    <div class="hamburger" onclick="toggleMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
+      <div class="logo">JUST LEARN</div>
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <nav id="navMenu">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+      </nav>
     </div>
-    <nav id="navMenu">
-      <a href="#">Home</a>
-      <a href="#">About</a>
-      <a href="#">Services</a>
-      <a href="#">Contact</a>
-    </nav>
-  </div>
-  
     <div id="user-info"></div>
     <button id="login-btn" class="login-btn">Login with Google</button>
   </nav>
+
   <!-- Hero Section -->
   <section class="hero">
     <h1>JUST LEARN</h1>
@@ -59,6 +59,7 @@
     &copy; 2025 JUST LEARN. All rights reserved.
   </footer>
 
+  <!-- Firebase + Google Auth -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-analytics.js";
@@ -82,7 +83,6 @@
     const loginBtn = document.getElementById('login-btn');
     const userInfo = document.getElementById('user-info');
 
-    // Sign in with Google on button click
     loginBtn.addEventListener('click', () => {
       signInWithPopup(auth, provider)
         .then((result) => {
@@ -95,12 +95,13 @@
         });
     });
 
-    // Update UI to show user info and sign out option
     function updateUI(user) {
       userInfo.innerHTML = `
-        <img src="${user.photoURL}" alt="${user.displayName}" style="width:32px; height:32px; border-radius:50%; vertical-align:middle;">
-        <span>Welcome, ${user.displayName}</span>
-        <button id="logout-btn" style="margin-left:10px;">Logout</button>
+        <div class="user-display">
+          <img src="${user.photoURL}" alt="${user.displayName}" class="user-pic">
+          <span>Welcome, ${user.displayName}</span>
+          <button id="logout-btn" class="logout-btn">Logout</button>
+        </div>
       `;
       loginBtn.style.display = 'none';
 
@@ -112,12 +113,18 @@
       });
     }
 
-    // Check if user is already signed in on page load
     auth.onAuthStateChanged((user) => {
       if (user) {
         updateUI(user);
       }
     });
+  </script>
+
+  <!-- Menu Toggle Script -->
+  <script>
+    function toggleMenu() {
+      document.getElementById('navMenu').classList.toggle('show');
+    }
   </script>
 
 </body>
