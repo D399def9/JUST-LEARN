@@ -56,7 +56,7 @@ img {
 #navMenu {
   display: flex;
   gap: 20px;
-  margin-right: 280px;
+  margin-right: 200px;
 }
 
 #navMenu a {
